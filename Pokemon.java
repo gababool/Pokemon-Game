@@ -6,6 +6,8 @@ public class Pokemon{
     private String name;
     private int HP;
     private int EP;
+    private boolean knowsSkill;
+    private boolean isFainted;
     
     Skill skill;
     
@@ -16,14 +18,15 @@ public class Pokemon{
         this.EP = 100;
         this.type = type;
         this.skill = null;
+        this.knowsSkill = false;
+        this.isFainted = false;
     }
 
-    @Override
     public String toString(){
         if (skill == null){
             return String.format("%s (%s)%n", name, type);
         } else {
-            return String.format("%s (%s) Knows %s AP: %d EC: %d%n", name, type, skill, skill.getAP(), skill.getEC());
+            return String.format("%s (%s) Knows %s AP: %d EC: %d%n", name, type, skill.getName(), skill.getAP(), skill.getEC());
         }
     }
 
@@ -35,10 +38,12 @@ public class Pokemon{
 
     public void learnSkill(Skill newSkill){
         this.skill = newSkill;
+        this.knowsSkill = true;
     }
 
     public void unlearnSkill(){
         this.skill = null;
+        this.knowsSkill = false;
     }
 
 
@@ -62,6 +67,14 @@ public class Pokemon{
 
     public int getEP() {
         return EP;
+    }
+
+    public boolean KnowsSkill() {
+        return knowsSkill;
+    }
+
+    public boolean isFainted() {
+        return isFainted;
     }
 
 
