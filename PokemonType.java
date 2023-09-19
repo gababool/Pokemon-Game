@@ -4,4 +4,5 @@ public enum PokemonType {
     FIRE,
     GRASS,
     NORMAL
+
 }
