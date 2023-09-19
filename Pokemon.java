@@ -33,6 +33,14 @@ public class Pokemon{
         this.name = name;
     }
 
+    public void learnSkill(Skill newSkill){
+        this.skill = newSkill;
+    }
+
+    public void unlearnSkill(){
+        this.skill = null;
+    }
+
 
     // Getters 
 
@@ -63,7 +71,7 @@ public class Pokemon{
         if (skill == null){
             System.out.println(name + " has not yet learned any skill");
         }
-        skill.use();
+        System.out.println(name + " used " + skill);
     }
 
 
