@@ -1,12 +1,12 @@
 
 public class Pokemon{
     
-    private String name;
-    final private int MAX_HP;
-    private int HP;
-    private int EP;
-    private PokemonType type;
-    private Skill skill;
+    String name;
+    final int MAX_HP;
+    int HP;
+    int EP;
+    PokemonType type;
+    Skill skill;
     
     Pokemon(String name, int MAX_HP, PokemonType type){
         this.name = name;
@@ -16,34 +16,6 @@ public class Pokemon{
         this.type = type;
         this.skill = null;
     }
-
-    // Getter methods
-
-    public int getMAX_HP() {
-        return MAX_HP;
-    }
-
-    public int getEP() {
-        return EP;
-    }
-
-    public PokemonType getType() {
-        return type;
-    }
-
-    public Skill getSkill() {
-        return skill;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getHP() {
-        return HP;
-    }
-
-    // Skill methods
 
      public void useSkill(){
         skill.use();

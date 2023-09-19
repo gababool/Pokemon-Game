@@ -1,5 +1,4 @@
 
-
 public enum PokemonType {
     WATER,
     FIRE,
