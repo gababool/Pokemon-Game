@@ -1,5 +1,5 @@
 package Pokemon;
 
-public class FirePokemon extends Pokemon {
+public abstract class FirePokemon extends Pokemon {
     
 }

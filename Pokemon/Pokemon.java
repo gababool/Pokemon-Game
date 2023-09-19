@@ -1,3 +1,9 @@
-public class Pokemon{
-    
+package Pokemon;
+
+public abstract class Pokemon{
+
+
+
+
+
 }
