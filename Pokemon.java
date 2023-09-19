@@ -1,4 +1,4 @@
-package Pokemon;
+
 
 import Skills.Skill;
 
