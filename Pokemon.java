@@ -70,8 +70,9 @@ public class Pokemon{
     public void useSkill(){
         if (skill == null){
             System.out.println(name + " has not yet learned any skill");
+        } else{
+            System.out.println(name + " used " + skill);
         }
-        System.out.println(name + " used " + skill);
     }
 
 
