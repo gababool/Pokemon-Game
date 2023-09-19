@@ -1,8 +1,5 @@
 
-
-import Skills.Skill;
-
-public abstract class Pokemon{
+public class Pokemon{
     
     private String name;
     final private int MAX_HP;
