@@ -76,11 +76,11 @@ public class Pokemon{
         return isFainted;
     }
 
-    public void useSkill(){
+    public void useSkill(Pokemon defender){
         if (skill == null){
             System.out.println(name + " has not yet learned any skill");
         } else{
-            skill.use();
+            skill.use(this, defender);
         }
     }
 

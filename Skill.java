@@ -15,8 +15,8 @@ public class Skill {
         return String.format("%s - AP: %s EC: %s%n", name, AP, EC);   
     }
 
-    public void use(){
-        
+    public void use(Pokemon attacker, Pokemon defender){
+
     }
 
     public String getName(){
