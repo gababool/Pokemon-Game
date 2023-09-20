@@ -23,14 +23,16 @@ public class Pokemon{
     }
 
     public String toString(){
+        String skillName = skill.getName();
+        int skillAP = skill.getAP();
+        int skillEC = skill.getEC();
+
         if (skill == null){
             return String.format("%s (%s)%n", name, type);
         } else {
-            return String.format("%s (%s) Knows %s AP: %d EC: %d%n", name, type, skill.getName(), skill.getAP(), skill.getEC());
+            return String.format("%s (%s). Knows %s AP: %d EC: %d%n", name, type, skillName, skillAP, skillEC);
         }
     }
-
-    // Setters 
 
      public void setName(String name) {
         this.name = name;
@@ -45,9 +47,6 @@ public class Pokemon{
         this.skill = null;
         this.knowsSkill = false;
     }
-
-
-    // Getters 
 
     public PokemonType getType() {
         return type;
@@ -77,14 +76,11 @@ public class Pokemon{
         return isFainted;
     }
 
-
-    // Skills
-
     public void useSkill(){
         if (skill == null){
             System.out.println(name + " has not yet learned any skill");
         } else{
-            System.out.println(name + " used " + skill);
+            skill.use();
         }
     }
 
