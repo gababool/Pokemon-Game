@@ -109,7 +109,7 @@ public class Pokemon {
         if (currentHP - damage < FAINT_HP) {
             currentHP = 0;
             isFainted = true;
-            return name + " has 0 HP left. " + name + " faints.";
+            return name + " has " + currentHP + " HP left. " +  name + " faints.";
         } else {
             currentHP -= damage;
             return name + " has " + currentHP + " HP left.";
