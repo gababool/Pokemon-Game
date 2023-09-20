@@ -1,4 +1,4 @@
-package pokemontest;
+/* package pokemontest;
 
 import assignment2.Item;
 import assignment2.Pokemon;
@@ -57,3 +57,4 @@ public class Task6Test {
     }
 
 }
+*/

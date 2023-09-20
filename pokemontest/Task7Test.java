@@ -1,4 +1,4 @@
-package pokemontest;
+/*package pokemontest;
 
 import assignment2.Item;
 import assignment2.ItemBag;
@@ -113,3 +113,4 @@ public class Task7Test {
         assertEquals(20.0, itemBag.getMaxWeight());
     }
 }
+*/

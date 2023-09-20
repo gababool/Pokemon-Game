@@ -1,5 +1,4 @@
 package assignment2;
-import java.lang.Math;
 public class Skill {
 
     final private String skillName;
@@ -22,7 +21,7 @@ public class Skill {
         double damage = AP * multiplier;
         String attackMsg = defender.receiveDamage((int)damage);
         String effectivenessMsg = TypeEffectiveness.generateEffectivenessMsg(multiplier);
-        String finalMsg = String.format("%s uses %s on %s.%s \n%s", attacker.getName(), skillName, defender.getName(), effectivenessMsg, attackMsg);
+        String finalMsg = String.format("%s uses %s on %s. %s\n%s", attacker.getName(), skillName, defender.getName(), effectivenessMsg, attackMsg);
         return finalMsg;
     }
 
