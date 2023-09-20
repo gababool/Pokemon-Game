@@ -11,13 +11,13 @@ public class Pokemon{
     private boolean isFainted;
     private Skill skill;
     
-    Pokemon(String name, int MAX_HP, PokemonType type){
+    Pokemon(String name, int MAX_HP, String type){
         this.name = name;
         this.MAX_HP = MAX_HP;
         this.currentHP = MAX_HP;
         this.MAX_EP = 100;
         this.energy = MAX_EP;
-        this.type = type;
+        this.type = PokemonType.valueOf(type.toUpperCase()); // Converts String to Enum
         this.skill = null;
         this.knowsSkill = false;
         this.isFainted = false;
