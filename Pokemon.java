@@ -23,14 +23,11 @@ public class Pokemon{
     }
 
     public String toString(){
-        String skillName = skill.getName();
-        int skillAP = skill.getAP();
-        int skillEC = skill.getEC();
-
+        
         if (skill == null){
             return String.format("%s (%s)%n", name, type);
         } else {
-            return String.format("%s (%s). Knows %s AP: %d EC: %d%n", name, type, skillName, skillAP, skillEC);
+            return String.format("%s (%s). Knows %s AP: %d EC: %d%n", name, type, skill.getName(), skill.getAP(), skill.getEC());
         }
     }
 
@@ -43,7 +40,7 @@ public class Pokemon{
         this.knowsSkill = true;
     }
 
-    public void unlearnSkill(){
+    public void forgetSkill(){
         this.skill = null;
         this.knowsSkill = false;
     }
@@ -81,6 +78,30 @@ public class Pokemon{
             System.out.println(name + " has not yet learned any skill");
         } else{
             skill.use(this, defender);
+        }
+    }
+
+    public String calcEffectiveness(Pokemon defender){
+        double multiplier = TypeEffectiveness.calculateMultiplier(type, defender.getType());
+        String effectiveness = "";
+        
+        if (multiplier == 0.5){
+            effectiveness = "It is not very effective...";
+        } else if (multiplier == 1){
+            return effectiveness;
+        } else {
+            effectiveness = "It is super effective!";
+        }
+       return effectiveness;
+    }
+
+
+    public void recieveDamage(int damage){
+        
+        if(HP - damage < 0){
+            HP = 0;
+        } else {
+            HP  -= damage;
         }
     }
 

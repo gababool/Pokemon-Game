@@ -1,7 +1,8 @@
 public class TypeEffectiveness {
 
-    public double calculateMultiplier(PokemonType attacker, PokemonType defender) {
+    public static double calculateMultiplier(PokemonType attacker, PokemonType defender) {
         double multiplier = 1.0;
+        
 
         switch (attacker) {
             case FIRE:

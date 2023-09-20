@@ -1,4 +1,4 @@
-
+import java.lang.Math;
 public class Skill {
 
     final private String name;
@@ -15,8 +15,12 @@ public class Skill {
         return String.format("%s - AP: %s EC: %s%n", name, AP, EC);   
     }
 
-    public void use(Pokemon attacker, Pokemon defender){
-
+    public double use(Pokemon attacker, Pokemon defender){
+        PokemonType attackerType = attacker.getType();
+        PokemonType defenderType = defender.getType();
+        double damage = AP * TypeEffectiveness.calculateMultiplier(attackerType, defenderType);
+        damage = (int)Math.round(damage);
+        return damage;
     }
 
     public String getName(){
