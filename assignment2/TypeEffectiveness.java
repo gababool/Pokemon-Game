@@ -1,3 +1,4 @@
+package assignment2;
 public class TypeEffectiveness {
 
     public static double calculateMultiplier(PokemonType attacker, PokemonType defender) {

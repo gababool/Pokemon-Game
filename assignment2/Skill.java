@@ -1,3 +1,4 @@
+package assignment2;
 import java.lang.Math;
 public class Skill {
 

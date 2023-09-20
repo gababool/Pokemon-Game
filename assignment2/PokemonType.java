@@ -1,3 +1,4 @@
+package assignment2;
 
 public enum PokemonType {
     WATER,
