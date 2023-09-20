@@ -1,49 +1,49 @@
 package assignment2;
 public class TypeEffectiveness {
 
-    public static double calculateMultiplier(PokemonType attacker, PokemonType defender) {
+    public static double calculateMultiplier(String attacker, String defender) {
         double multiplier = 1.0;
         
         switch (attacker) {
-            case FIRE:
+            case "Fire":
                 switch (defender) {
-                    case FIRE:
+                    case "Fire":
                         multiplier = 0.5;
                         break;
-                    case GRASS:
+                    case "Grass":
                         multiplier= 2.0;
                         break;
-                    case WATER:
+                    case "Water":
                         multiplier= 0.5;
                         break;
                     default:
                         break;
                 }
                 break;
-            case WATER:
+            case "Water":
                 switch (defender) {
-                        case FIRE:
+                        case "Fire":
                             multiplier= 2.0;
                             break;
-                        case GRASS:
+                        case "Grass":
                             multiplier= 0.5;
                             break;
-                        case WATER:
+                        case "Water":
                             multiplier= 0.5;
                             break;
                         default:
                             break;
                 }
                 break;
-            case GRASS:
+            case "Grass":
                 switch (defender) {
-                        case FIRE:
+                        case "Fire":
                             multiplier= 0.5;
                             break;
-                        case GRASS:
+                        case "Grass":
                             multiplier= 0.5;
                             break;
-                        case WATER:
+                        case "Water":
                             multiplier= 2.0;
                             break;
                         default:
@@ -51,7 +51,7 @@ public class TypeEffectiveness {
                         
                 }
                 break;
-            case NORMAL:
+            case "Normal":
                 break;
             
         

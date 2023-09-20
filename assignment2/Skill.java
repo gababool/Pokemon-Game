@@ -17,12 +17,13 @@ public class Skill {
         return String.format("%s - AP: %s EC: %s%n", skillName, AP, EC);   
     }
 
-    public void useSkill(Pokemon attacker, Pokemon defender){
+    public String useSkill(Pokemon attacker, Pokemon defender){
         double multiplier = TypeEffectiveness.calculateMultiplier(attacker.getType(), defender.getType());
         double damage = AP * multiplier;
-        String attackMsg = defender.receiveDamage((int)Math.round(damage));
+        String attackMsg = defender.receiveDamage((int)damage);
         String effectivenessMsg = TypeEffectiveness.generateEffectivenessMsg(multiplier);
-        System.out.printf("%s uses %s on %s. %s %s%n", attacker.getName(), skillName, defender.getName(), effectivenessMsg, attackMsg);
+        String finalMsg = String.format("%s uses %s on %s.%s \n%s", attacker.getName(), skillName, defender.getName(), effectivenessMsg, attackMsg);
+        return finalMsg;
     }
 
     public String getName(){

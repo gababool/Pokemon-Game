@@ -1,8 +1,10 @@
 package assignment2;
 
+import java.util.Objects;
+
 public class Pokemon{
     
-    private final PokemonType type;
+    private final String type;
     private final int MAX_HP;
     private final int MAX_EP;
     private String name;
@@ -12,13 +14,13 @@ public class Pokemon{
     private boolean isFainted;
     private Skill skill;
     
-    Pokemon(String name, int MAX_HP, String type){
+    public Pokemon(String name, int MAX_HP, String type){
         this.name = name;
         this.MAX_HP = MAX_HP;
         this.currentHP = MAX_HP;
         this.MAX_EP = 100;
         this.energy = MAX_EP;
-        this.type = PokemonType.valueOf(type.toUpperCase()); // Converts String to Enum
+        this.type = type;
         this.skill = null;
         this.knowsSkill = false;
         this.isFainted = false;
@@ -27,11 +29,36 @@ public class Pokemon{
     @Override
     public String toString(){
         if (skill == null){
-            return String.format("%s (%s)%n", name, type);
+            return String.format("%s (%s)", name, type);
         } else {
-            return String.format("%s (%s). Knows %s AP: %d EC: %d%n", name, type, skill.getName(), skill.getAP(), skill.getEC());
+            return String.format("%s (%s). Knows %s - AP: %d EC: %d", name, type, skill.getName(), skill.getAP(), skill.getEC());
         }
     }
+
+    // For this part we had to use the internet to find out how to override the equals and hashCode methods to make assertEquals() in the tests work.
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Pokemon otherPokemon = (Pokemon) obj;
+        return currentHP == otherPokemon.currentHP &&
+               MAX_HP == otherPokemon.MAX_HP &&
+               energy == otherPokemon.energy &&
+               Objects.equals(name, otherPokemon.name) &&
+               Objects.equals(type, otherPokemon.type) &&
+               Objects.equals(skill, otherPokemon.skill);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, type, skill, currentHP, MAX_HP, energy);
+    }
+    
 
     public void learnSkill(String skillName, int skillAP, int skillEC){
         this.skill = new Skill(skillName, skillAP, skillEC);
@@ -43,22 +70,24 @@ public class Pokemon{
         this.knowsSkill = false;
     }
 
-    public void attack(Pokemon defender){
+    public String attack(Pokemon defender){
         if (skill == null){
-            System.out.println("Attack failed." + name + " does not know a skill.");
+            return "Attack failed." + name + " does not know a skill.";
         } 
         else if (skill.getEC() > energy){
-            System.out.println("Attack failed. " + name + " lacks energy: " + energy + "/" + skill.getEC());
+            return "Attack failed. " + name + " lacks energy: " + energy + "/" + skill.getEC();
         }
         else if (isFainted){
-            System.out.println("Attack failed. " + name + " fainted.");
+            return "Attack failed. " + name + " fainted.";
         }
         else if (defender.isFainted()){
-            System.out.println("Attack failed. " + defender.getName() + " fainted.");
+            return "Attack failed. " + defender.getName() + " fainted.";
         }
         else{
-            skill.useSkill(this, defender);
             spendEP();
+            String attackMsg = skill.useSkill(this, defender);
+            return attackMsg;
+            
         }
     }
 
@@ -96,7 +125,7 @@ public class Pokemon{
         }
     }
 
-    public void recoverEP(){
+    public void recoverEnergy(){
         int restoredEP = 25;
         if((energy + restoredEP) > MAX_EP){
             energy = MAX_EP;
@@ -121,7 +150,7 @@ public class Pokemon{
         this.name = name;
     }
 
-    public PokemonType getType() {
+    public String getType() {
         return type;
     }
 
