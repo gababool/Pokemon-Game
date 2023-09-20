@@ -89,9 +89,7 @@ public class Pokemon{
             System.out.println("Attack failed. " + defender.getName() + " fainted.");
         }
         else{
-            System.out.print(name + " uses " + skill.getName() + " on " + defender.getName() + ". ");
-            skill.use(this, defender);
-            System.out.println("\n");
+            skill.attack(this, defender);
         }
     }
 
@@ -109,13 +107,14 @@ public class Pokemon{
        return effectiveness;
     }
 
-    public void receiveDamage(int damage){
+    public String receiveDamage(int damage){
         if(HP - damage < 0){
             HP = 0;
             isFainted = true;
-            System.out.println(name + " faints.");
+            return name + " faints.";
         } else {
             HP  -= damage;
+            return name + " has " + HP + " HP left.";
         }
     }
 

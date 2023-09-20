@@ -55,11 +55,14 @@ public class TypeEffectiveness {
         return multiplier;
     }
 
-    public static void calculteEffectiveness(double multiplier){
+    public static String calculteEffectiveness(double multiplier){
         if (multiplier == 0.5){
-            System.out.print(" It is not very effective...");
+            return "It is not very effective...";
         } else if (multiplier == 2.0){
-            System.out.print(" It is super effective!");
+            return "It is super effective!";
+        }
+        else{
+            return "";
         }
     }
 
