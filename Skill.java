@@ -11,11 +11,12 @@ public class Skill {
         this.EC = EC;
     }
 
+    @Override
     public String toString(){
         return String.format("%s - AP: %s EC: %s%n", skillName, AP, EC);   
     }
 
-    public void attack(Pokemon attacker, Pokemon defender){
+    public void useSkill(Pokemon attacker, Pokemon defender){
         double multiplier = TypeEffectiveness.calculateMultiplier(attacker.getType(), defender.getType());
         double damage = AP * multiplier;
         String attackMsg = defender.receiveDamage((int)Math.round(damage));
