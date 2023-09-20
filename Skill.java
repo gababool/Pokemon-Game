@@ -1,18 +1,18 @@
 import java.lang.Math;
 public class Skill {
 
-    final private String name;
+    final private String skillName;
     final private int AP;
     final private int EC;
 
-    Skill(String name, int AP, int EC){
-        this.name = name;
+    Skill(String skillName, int AP, int EC){
+        this.skillName = skillName;
         this.AP = AP;
         this.EC = EC;
     }
 
     public String toString(){
-        return String.format("%s - AP: %s EC: %s%n", name, AP, EC);   
+        return String.format("%s - AP: %s EC: %s%n", skillName, AP, EC);   
     }
 
     public void attack(Pokemon attacker, Pokemon defender){
@@ -20,11 +20,11 @@ public class Skill {
         double damage = AP * multiplier;
         String attackMsg = defender.receiveDamage((int)Math.round(damage));
         String effectivenessMsg = TypeEffectiveness.calculteEffectiveness(multiplier);
-        System.out.printf("%s uses %s on %s. %s %s%n", attacker.getName(), name, defender.getName(), effectivenessMsg, attackMsg);
+        System.out.printf("%s uses %s on %s. %s %s%n", attacker.getName(), skillName, defender.getName(), effectivenessMsg, attackMsg);
     }
 
     public String getName(){
-        return name;
+        return skillName;
     }
 
     public int getAP() {

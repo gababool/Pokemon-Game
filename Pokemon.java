@@ -9,8 +9,7 @@ public class Pokemon{
     private int EP;
     private boolean knowsSkill;
     private boolean isFainted;
-    
-    Skill skill;
+    private Skill skill;
     
     Pokemon(String name, int MAX_HP, PokemonType type){
         this.name = name;
@@ -37,8 +36,8 @@ public class Pokemon{
         this.name = name;
     }
 
-    public void learnSkill(Skill newSkill){
-        this.skill = newSkill;
+    public void learnSkill(String skillName, int skillAP, int skillEC){
+        this.skill = new Skill(name, skillAP, skillEC);
         this.knowsSkill = true;
     }
 
@@ -65,6 +64,10 @@ public class Pokemon{
 
     public int getEP() {
         return EP;
+    }
+
+    public Skill getSkill(){
+        return skill;
     }
 
     public boolean KnowsSkill() {
