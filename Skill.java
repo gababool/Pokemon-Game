@@ -15,12 +15,14 @@ public class Skill {
         return String.format("%s - AP: %s EC: %s%n", name, AP, EC);   
     }
 
-    public double use(Pokemon attacker, Pokemon defender){
+    public void use(Pokemon attacker, Pokemon defender){
         PokemonType attackerType = attacker.getType();
         PokemonType defenderType = defender.getType();
-        double damage = AP * TypeEffectiveness.calculateMultiplier(attackerType, defenderType);
-        damage = (int)Math.round(damage);
-        return damage;
+        double multiplier = TypeEffectiveness.calculateMultiplier(attackerType, defenderType);
+        double damage = AP * multiplier;
+        defender.receiveDamage((int)Math.round(damage));
+        TypeEffectiveness.calculteEffectiveness(multiplier); // Prints effectiveness string
+
     }
 
     public String getName(){

@@ -3,7 +3,6 @@ public class TypeEffectiveness {
     public static double calculateMultiplier(PokemonType attacker, PokemonType defender) {
         double multiplier = 1.0;
         
-
         switch (attacker) {
             case FIRE:
                 switch (defender) {
@@ -54,6 +53,14 @@ public class TypeEffectiveness {
         
         }
         return multiplier;
+    }
+
+    public static void calculteEffectiveness(double multiplier){
+        if (multiplier == 0.5){
+            System.out.print(" It is not very effective...");
+        } else if (multiplier == 2.0){
+            System.out.print(" It is super effective!");
+        }
     }
 
 }

@@ -3,6 +3,7 @@ public class Pokemon{
     
     private final PokemonType type;
     private final int MAX_HP;
+    private final int MAX_EP;
     private String name;
     private int HP;
     private int EP;
@@ -15,7 +16,8 @@ public class Pokemon{
         this.name = name;
         this.MAX_HP = MAX_HP;
         this.HP = MAX_HP;
-        this.EP = 100;
+        this.MAX_EP = 100;
+        this.EP = MAX_EP;
         this.type = type;
         this.skill = null;
         this.knowsSkill = false;
@@ -75,8 +77,19 @@ public class Pokemon{
 
     public void useSkill(Pokemon defender){
         if (skill == null){
-            System.out.println(name + " has not yet learned any skill");
-        } else{
+            System.out.println("Attack failed." + name + " does not know a skill.");
+        } 
+        else if (skill.getEC() > EP){
+            System.out.println("Attack failed. " + name + " lacks energy: " + EP + "/" + skill.getEC());
+        }
+        else if (isFainted){
+            System.out.println("Attack failed. " + name + " fainted.");
+        }
+        else if (defender.isFainted()){
+            System.out.println("Attack failed. " + defender.getName() + " fainted.");
+        }
+        else{
+            System.out.print("\n" + name + " uses " + skill.getName() + " on " + defender.getName() + ". ");
             skill.use(this, defender);
         }
     }
@@ -95,13 +108,43 @@ public class Pokemon{
        return effectiveness;
     }
 
-
-    public void recieveDamage(int damage){
-        
+    public void receiveDamage(int damage){
         if(HP - damage < 0){
             HP = 0;
+            isFainted = true;
+            System.out.println(name + " faints.");
         } else {
             HP  -= damage;
+        }
+    }
+
+    public void spendEP(){
+        int energyCost = skill.getEC();
+        if(EP - energyCost < 0){
+            EP = 0;
+        } else {
+            EP  -= energyCost;
+        }
+    }
+
+    public void recoverEP(){
+        int restoredEP = 25;
+        if((EP + restoredEP) > MAX_EP){
+            EP = MAX_EP;
+        } else {
+            EP  += restoredEP;
+        }
+    }
+
+    public void rest(){
+        int restoredHP = 20;
+        if(!isFainted){
+           if ((restoredHP + HP) > MAX_HP){
+            HP = MAX_HP;
+            }
+            else {
+                HP += restoredHP;
+            }
         }
     }
 
