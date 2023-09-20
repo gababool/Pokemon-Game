@@ -9,5 +9,6 @@ public class Main {
         attacker.useSkill(defender);
         attacker.useSkill(defender);
         attacker.useSkill(defender);
+
     }
 }

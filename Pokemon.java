@@ -89,8 +89,9 @@ public class Pokemon{
             System.out.println("Attack failed. " + defender.getName() + " fainted.");
         }
         else{
-            System.out.print("\n" + name + " uses " + skill.getName() + " on " + defender.getName() + ". ");
+            System.out.print(name + " uses " + skill.getName() + " on " + defender.getName() + ". ");
             skill.use(this, defender);
+            System.out.println("\n");
         }
     }
 
