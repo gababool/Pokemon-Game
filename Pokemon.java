@@ -57,6 +57,7 @@ public class Pokemon{
         }
         else{
             skill.useSkill(this, defender);
+            spendEP();
         }
     }
 
