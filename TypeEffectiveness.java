@@ -55,7 +55,7 @@ public class TypeEffectiveness {
         return multiplier;
     }
 
-    public static String calculteEffectiveness(double multiplier){
+    public static String generateEffectivenessMsg(double multiplier){
         if (multiplier == 0.5){
             return "It is not very effective...";
         } else if (multiplier == 2.0){

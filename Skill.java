@@ -20,7 +20,7 @@ public class Skill {
         double multiplier = TypeEffectiveness.calculateMultiplier(attacker.getType(), defender.getType());
         double damage = AP * multiplier;
         String attackMsg = defender.receiveDamage((int)Math.round(damage));
-        String effectivenessMsg = TypeEffectiveness.calculteEffectiveness(multiplier);
+        String effectivenessMsg = TypeEffectiveness.generateEffectivenessMsg(multiplier);
         System.out.printf("%s uses %s on %s. %s %s%n", attacker.getName(), skillName, defender.getName(), effectivenessMsg, attackMsg);
     }
 
