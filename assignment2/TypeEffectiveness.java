@@ -19,6 +19,7 @@ public class TypeEffectiveness {
                     default:
                         break;
                 }
+                break;
             case WATER:
                 switch (defender) {
                         case FIRE:
@@ -33,6 +34,7 @@ public class TypeEffectiveness {
                         default:
                             break;
                 }
+                break;
             case GRASS:
                 switch (defender) {
                         case FIRE:
@@ -48,6 +50,7 @@ public class TypeEffectiveness {
                             break;
                         
                 }
+                break;
             case NORMAL:
                 break;
             
