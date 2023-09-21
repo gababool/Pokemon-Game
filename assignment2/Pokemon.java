@@ -91,20 +91,6 @@ public class Pokemon {
         }
     }
 
-    public String calcEffectiveness(Pokemon defender) {
-        double multiplier = TypeEffectiveness.calculateMultiplier(type, defender.getType());
-        String effectiveness = "";
-
-        if (multiplier == 0.5) {
-            effectiveness = "It is not very effective...";
-        } else if (multiplier == 1) {
-            return effectiveness;
-        } else {
-            effectiveness = "It is super effective!";
-        }
-        return effectiveness;
-    }
-
     public String receiveDamage(int damage) {
         if (currentHP - damage < FAINT_HP) {
             currentHP = 0;

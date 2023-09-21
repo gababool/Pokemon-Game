@@ -60,13 +60,14 @@ public class TypeEffectiveness {
     }
 
     public static String generateEffectivenessMsg(double multiplier) {
+        String effectiveness = "";
         if (multiplier == 0.5) {
-            return " It is not very effective...";
+            effectiveness = " It is not very effective...";
         } else if (multiplier == 2.0) {
-            return " It is super effective!";
-        } else {
-            return "";
-        }
+            effectiveness = " It is super effective!";
+        } 
+        return effectiveness;
+
     }
 
 }
