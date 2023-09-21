@@ -127,6 +127,30 @@ public class Pokemon {
         } else {
             currentHP += restoredHP;
         }
+    
+    }
+    public String useItem(Item item) {
+        int itemPower = item.getPowerValue();
+        String itemName = item.getName();
+        int healedHp = heal(itemPower);
+        String pokemonName = getName();
+        if (healedHp == 0) {
+            return String.format("%s could not use %s. HP is already full.", pokemonName, itemName);    
+        }
+        return String.format("%s used %s. It healed %d HP.", pokemonName, itemName, healedHp);
+    }
+
+    public int heal(int hp) {
+        int newHp = this.currentHP + hp;
+        if (newHp > this.MAX_HP) {
+            int healed = this.MAX_HP - this.currentHP;
+            this.currentHP = this.MAX_HP;
+            return healed;
+        } else {
+            int healed = newHp - this.currentHP;
+            this.currentHP = newHp;
+            return healed;
+        }
     }
 
     public void setName(String name) {
