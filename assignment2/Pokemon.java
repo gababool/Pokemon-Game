@@ -6,9 +6,9 @@ public class Pokemon {
 
     private final String type;
     private final int MAX_HP;
-    private final int MAX_EP;
-    private final int FAINT_HP; // MAX HP FAINT HP MAX EP Skulle kunna vara static, iochmed att det finns en
-                                // instants och vi ej kommer ändra det
+    private final int MAX_EP = 100;
+    private final int FAINT_HP = 0;
+
     private String name;
     private int currentHP;
     private int energy;
@@ -20,8 +20,6 @@ public class Pokemon {
         this.name = name;
         this.MAX_HP = MAX_HP;
         this.currentHP = MAX_HP;
-        this.FAINT_HP = 0;
-        this.MAX_EP = 100;
         this.energy = MAX_EP;
         this.type = type;
         this.skill = null;
