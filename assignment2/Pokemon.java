@@ -37,9 +37,6 @@ public class Pokemon {
         }
     }
 
-    // For this part we had to use the internet to find out how to override the
-    // equals and hashCode methods to make assertEquals() in the tests work.
-
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
