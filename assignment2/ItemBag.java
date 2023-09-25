@@ -28,7 +28,12 @@ public class ItemBag {
     }
 
     public Item removeItemAt(int index){
-        return item;
+        if (index > (storedItems.size() - 1) || index < -1){ // -1 to allow for last item removal?
+            return null;
+        }
+        else{
+            return storedItems.remove(index); // No need to sort again after removal. The list gets adjusted.
+        }
     }
 
     public Item popItem(){
@@ -59,7 +64,7 @@ public class ItemBag {
         // When item is added to bag, sout index position
     }
 
-    public Item peekItemAt(int index){
+    public String peekItemAt(int index){
         return item;
     }
 

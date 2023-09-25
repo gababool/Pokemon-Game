@@ -1,4 +1,7 @@
 package assignment2;
+
+import java.util.Objects;
+
 public class Skill {
 
     final private String skillName;
@@ -14,6 +17,27 @@ public class Skill {
     @Override
     public String toString(){
         return String.format("%s - AP: %s EC: %s%n", skillName, AP, EC);   
+    }
+
+    public boolean equals(Object obj){
+        if(this == obj){
+            return true;
+        }
+        if (obj == null || this.getClass() != obj.getClass()){
+            return false;
+        }
+        Skill otherSkill = (Skill)obj;
+        
+        boolean sameName = this.skillName == otherSkill.getName();
+        boolean sameAP = this.AP == otherSkill.getAP();
+        boolean sameEC = this.EC == otherSkill.getEC();
+
+        return (sameName && sameAP && sameEC);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(skillName, AP, EC);
     }
 
     public String useSkill(Pokemon attacker, Pokemon defender){

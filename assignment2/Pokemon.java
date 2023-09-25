@@ -40,21 +40,23 @@ public class Pokemon {
     // For this part we had to use the internet to find out how to override the
     // equals and hashCode methods to make assertEquals() in the tests work.
 
-    @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
         }
-        if (obj == null || getClass() != obj.getClass()) {
+        if (obj == null || this.getClass() != obj.getClass()) {
             return false;
         }
+
         Pokemon otherPokemon = (Pokemon) obj;
-        return currentHP == otherPokemon.currentHP &&
-                MAX_HP == otherPokemon.MAX_HP &&
-                energy == otherPokemon.energy &&
-                Objects.equals(name, otherPokemon.name) &&
-                Objects.equals(type, otherPokemon.type) &&
-                Objects.equals(skill, otherPokemon.skill);
+        boolean sameName = name == otherPokemon.getName();
+        boolean samePower = type == otherPokemon.getType();
+        boolean sameSkill = skill == otherPokemon.getSkill();
+        boolean sameCurrentHP = currentHP == otherPokemon.getCurrentHP();
+        boolean sameMAX_HP = MAX_HP == otherPokemon.getMAX_HP();
+        boolean sameEnergy = energy == otherPokemon.getEnergy();
+
+        return (sameName && samePower && sameSkill && sameCurrentHP && sameMAX_HP && sameEnergy);
     }
 
     @Override
@@ -85,7 +87,6 @@ public class Pokemon {
             spendEP();
             String attackMsg = skill.useSkill(this, defender);
             return attackMsg;
-
         }
     }
 
@@ -93,7 +94,7 @@ public class Pokemon {
         if (currentHP - damage < FAINT_HP) {
             currentHP = 0;
             isFainted = true;
-            return name + " has " + currentHP + " HP left. " +  name + " faints.";
+            return name + " has " + currentHP + " HP left. " + name + " faints.";
         } else {
             currentHP -= damage;
             return name + " has " + currentHP + " HP left.";
@@ -132,7 +133,7 @@ public class Pokemon {
         int healedHp = heal(itemPower);
         String pokemonName = getName();
         if (healedHp == 0) {
-            return String.format("%s could not use %s. HP is already full.", pokemonName, itemName);    
+            return String.format("%s could not use %s. HP is already full.", pokemonName, itemName);
         }
         return String.format("%s used %s. It healed %d HP.", pokemonName, itemName, healedHp);
     }
