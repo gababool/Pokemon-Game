@@ -5,89 +5,84 @@ import java.util.ArrayList;
 public class ItemBag {
 
     private final double MAX_WEIGHT;
-    private double currentWeight;
     private ArrayList<Item> storedItems;
-    private int numOfItems;
-    
-    public ItemBag(double MAX_WEIGHT){
+
+    public ItemBag(double MAX_WEIGHT) {
         this.MAX_WEIGHT = MAX_WEIGHT;
-        this.currentWeight = 0;
         this.storedItems = new ArrayList<>();
-        this.numOfItems = 0;
     }
 
-    public int addItem(Item item){
-        double weight = item.getWeight();
-        if (weight + currentWeight > MAX_WEIGHT){
+    public int addItem(Item item) {
+        if (item.getWeight() + getCurrentWeight() > getMaxWeight()) {
             return -1;
-        } else {
+        }
+
+        int indexToAdd = getItemWeightIndex(item);
+        if (indexToAdd >= 0)
+            storedItems.add(indexToAdd, item);
+        else {
             storedItems.add(item);
-            currentWeight += weight;
-            numOfItems += 1;
-            int itemIndex = sortItems(weight);
-            return itemIndex;
         }
+        return storedItems.indexOf(item);
     }
 
-    public Item removeItemAt(int index){
-        if (index > (storedItems.size() - 1) || index < 0){ 
-            return null;
-        }
-        else{
-            Item removedItem = storedItems.get(index);
-            numOfItems -= 1;
-            currentWeight -= removedItem.getWeight();
-            return storedItems.remove(index); // No need to sort again after removal. The ArrayList gets adjusted.
-        }
-    }
-
-    public Item popItem(){
-        int lastIndex = storedItems.size() - 1;
-        if (numOfItems == 0){
-            return null;
-        } else{
-            return removeItemAt(lastIndex);
-        }
-    }
-
-    public int sortItems(double weight){
-        int itemIndex = 0;
-        double weightCounter = 0;
-        int i = 0;
-        while (weightCounter != MAX_WEIGHT && i < storedItems.length){
-            weightCounter += storedItems[i].getWeight();
-            if (storedItems[i].getWeight() >= MAX_WEIGHT){
-                return -1;
+    private int getItemWeightIndex(Item item) {
+        int indexToAdd = -1;
+        for (Item i : storedItems) {
+            if (i.getWeight() < item.getWeight()) {
+                indexToAdd = storedItems.indexOf(i);
+                return indexToAdd;
             }
-                
         }
-        i++;
-
-        while (weightCounter <= MAX_WEIGHT){
-            for (int i = 0; i < storedItems.length; i++){
-                weightCounter += storedItems[i].getWeight();    
-            }
-        } 
+        return indexToAdd;
     }
 
-    public String peekItemAt(int index){
+    public String peekItemAt(int index) {
+        if (index < 0) {
+            return "";
+        } else if (index > storedItems.size() - 1) {
+            return "";
+        }
         Item item = storedItems.get(index);
         return item.toString();
     }
 
-    public double getMAX_WEIGHT() {
+    public Item removeItemAt(int index) {
+        if (index < 0) {
+            return null;
+        } else if (index > storedItems.size() - 1) {
+            return null;
+        }
+        Item item = storedItems.remove(index);
+        return item;
+    }
+
+    //public void isIndexOutOfBounds
+    //if (index < 0) {
+    //        return true;
+    //    } else if (index > storedItems.size() - 1) {
+    //        return true;
+    //    } else return false
+    //
+
+    public Item popItem() {
+        return removeItemAt(0);
+    }
+
+    public double getMaxWeight() {
         return MAX_WEIGHT;
     }
 
     public double getCurrentWeight() {
+        double currentWeight = 0;
+        for (Item i : storedItems) {
+            currentWeight += i.getWeight();
+        }
         return currentWeight;
     }
 
     public int getNumOfItems() {
-        return numOfItems;
+        return storedItems.size();
     }
-
-    
-
 
 }
