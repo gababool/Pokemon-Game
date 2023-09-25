@@ -120,15 +120,12 @@ public class Pokemon {
 
     public void rest() {
         int restoredHP = 20;
-        if (isFainted)
+        if (isFainted) {
             return;
-        if ((restoredHP + currentHP) > MAX_HP) {
-            currentHP = MAX_HP;
-        } else {
-            currentHP += restoredHP;
         }
-    
+        heal(restoredHP);
     }
+
     public String useItem(Item item) {
         int itemPower = item.getPowerValue();
         String itemName = item.getName();

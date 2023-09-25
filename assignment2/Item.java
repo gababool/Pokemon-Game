@@ -24,8 +24,10 @@ public class Item {
     }
 
     private double truncateDouble(double value){
-        double factor = Math.pow(10, 2);
-        return Math.floor(value * factor) / factor;
+        double truncateDouble;
+        truncateDouble = (int)(getWeight() * 1000.0) / 10;
+        truncateDouble = truncateDouble / 100;
+        return truncateDouble;
     }
 
     @Override
@@ -33,7 +35,8 @@ public class Item {
         return String.format("%s heals %d HP. (%.2f)", name, powerValue, truncateDouble(weight));
     }
 
-    @Override
+    // What happens with assertEquals test when we compare strings? Why is it still working?
+    @Override 
     public boolean equals(Object obj) {
         Item itemToCompare = (Item) obj;
    
