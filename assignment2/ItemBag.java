@@ -22,22 +22,32 @@ public class ItemBag {
             return -1;
         } else {
             storedItems.add(item);
+            currentWeight += weight;
+            numOfItems += 1;
             int itemIndex = sortItems(weight);
             return itemIndex;
         }
     }
 
     public Item removeItemAt(int index){
-        if (index > (storedItems.size() - 1) || index < -1){ // -1 to allow for last item removal?
+        if (index > (storedItems.size() - 1) || index < 0){ 
             return null;
         }
         else{
-            return storedItems.remove(index); // No need to sort again after removal. The list gets adjusted.
+            Item removedItem = storedItems.get(index);
+            numOfItems -= 1;
+            currentWeight -= removedItem.getWeight();
+            return storedItems.remove(index); // No need to sort again after removal. The ArrayList gets adjusted.
         }
     }
 
     public Item popItem(){
-        return item;
+        int lastIndex = storedItems.size() - 1;
+        if (numOfItems == 0){
+            return null;
+        } else{
+            return removeItemAt(lastIndex);
+        }
     }
 
     public int sortItems(double weight){
@@ -60,12 +70,9 @@ public class ItemBag {
         } 
     }
 
-    public void placeItem(){
-        // When item is added to bag, sout index position
-    }
-
     public String peekItemAt(int index){
-        return item;
+        Item item = storedItems.get(index);
+        return item.toString();
     }
 
     public double getMAX_WEIGHT() {

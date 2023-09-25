@@ -72,19 +72,20 @@ public class Pokemon {
     }
 
     public String attack(Pokemon defender) {
+        String attackMsg = "";
         if (skill == null) {
-            return "Attack failed." + name + " does not know a skill.";
+            attackMsg = "Attack failed." + name + " does not know a skill.";
         } else if (skill.getEC() > energy) {
-            return "Attack failed. " + name + " lacks energy: " + energy + "/" + skill.getEC();
+            attackMsg = "Attack failed. " + name + " lacks energy: " + energy + "/" + skill.getEC();
         } else if (isFainted) {
-            return "Attack failed. " + name + " fainted.";
+            attackMsg = "Attack failed. " + name + " fainted.";
         } else if (defender.isFainted()) {
-            return "Attack failed. " + defender.getName() + " fainted.";
+            attackMsg = "Attack failed. " + defender.getName() + " fainted.";
         } else {
             spendEP();
-            String attackMsg = skill.useSkill(this, defender);
-            return attackMsg;
+            attackMsg = skill.useSkill(this, defender); 
         }
+        return attackMsg;
     }
 
     public String receiveDamage(int damage) {
