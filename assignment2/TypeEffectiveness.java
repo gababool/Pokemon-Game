@@ -7,108 +7,109 @@ public class TypeEffectiveness {
     final static private double NORMAL_EFFECTIVENESS = 1.0;
     
 
-    public static double calculateMultiplier(String attackerType, String defenderType) {
+    public static double calculateMultiplier(PokemonType attackerType, PokemonType defenderType) {
         switch (attackerType) {
-            case "Water":
+            case WATER:
                 return calculateWaterMultiplier(defenderType);
-            case "Fire":
+            case FIRE:
                 return calculateFireMultiplier(defenderType);
-            case "Grass":
+            case GRASS:
                 return calculateGrassMultiplier(defenderType);
-            case "Bug":
+            case BUG:
                 return calculateBugMultiplier(defenderType);
-            case "Electric":
+            case ELECTRIC:
                 return calculateElectricMultiplier(defenderType);
-            case "Dragon":
+            case DRAGON:
                 return calculateDragonMultiplier(defenderType);    
-            case "Ice":
+            case ICE:
                 return calculateIceMultiplier(defenderType);
+            default:
+                return NORMAL_EFFECTIVENESS;
         }
-        return NORMAL_EFFECTIVENESS;
     }
 
-    private static double calculateFireMultiplier(String defenderType) {
+    private static double calculateFireMultiplier(PokemonType defenderType) {
         switch (defenderType) {
-            case "Fire":
-            case "Water":
-            case "Dragon":
+            case FIRE:
+            case WATER:
+            case DRAGON:
                 return NOT_VERY_EFFECTIVE;
-            case "Grass":
-            case "Bug":
-            case "Ice":
+            case GRASS:
+            case BUG:
+            case ICE:
                 return SUPER_EFFECTIVE;
             default:
                 return NORMAL_EFFECTIVENESS;
         }
     }
 
-    private static double calculateGrassMultiplier(String defenderType){
+    private static double calculateGrassMultiplier(PokemonType defenderType){
             switch (defenderType){
-                case "Fire":
-                case "Grass":
-                case "Dragon":
-                case "Bug":
+                case FIRE:
+                case GRASS:
+                case DRAGON:
+                case BUG:
                     return NOT_VERY_EFFECTIVE;
-                case "Water":
+                case WATER:
                     return SUPER_EFFECTIVE;
                 default:
                     return NORMAL_EFFECTIVENESS;
         }
     }
     
-    private static double calculateIceMultiplier(String defenderType){
+    private static double calculateIceMultiplier(PokemonType defenderType){
             switch (defenderType){
-                case "Fire":
-                case "Ice":
-                case "Water":
+                case FIRE:
+                case ICE:
+                case WATER:
                     return NOT_VERY_EFFECTIVE;
-                case "Grass":
-                case "Dragon":
+                case GRASS:
+                case DRAGON:
                     return SUPER_EFFECTIVE;
                 default:
                     return NORMAL_EFFECTIVENESS;
         }
     }
 
-    private static double calculateWaterMultiplier(String defenderType){
+    private static double calculateWaterMultiplier(PokemonType defenderType){
             switch (defenderType){
-                case "Grass":
-                case "Dragon":
-                case "Water":
+                case GRASS:
+                case DRAGON:
+                case WATER:
                     return NOT_VERY_EFFECTIVE;
-                case "Fire":
+                case FIRE:
                     return SUPER_EFFECTIVE;
                 default:
                     return NORMAL_EFFECTIVENESS;
         }
     }
 
-    private static double calculateBugMultiplier(String defenderType){
+    private static double calculateBugMultiplier(PokemonType defenderType){
         switch (defenderType){
-            case "Fire":
+            case FIRE:
                 return NOT_VERY_EFFECTIVE;
-            case "Grass":
+            case GRASS:
                 return SUPER_EFFECTIVE;
             default:
                 return NORMAL_EFFECTIVENESS;
         } 
     }
 
-    private static double calculateDragonMultiplier(String defenderType){
+    private static double calculateDragonMultiplier(PokemonType defenderType){
         switch (defenderType){
-            case "Dragon":
+            case DRAGON:
                 return SUPER_EFFECTIVE;
             default:
                 return NORMAL_EFFECTIVENESS;
         } 
     }
-    private static double calculateElectricMultiplier(String defenderType){
+    private static double calculateElectricMultiplier(PokemonType defenderType){
         switch (defenderType){
-            case "Grass":
-            case "Electric":
-            case "Dragon":
+            case GRASS:
+            case ELECTRIC:
+            case DRAGON:
                 return NOT_VERY_EFFECTIVE;
-            case "Water":
+            case WATER:
                 return SUPER_EFFECTIVE;
             default:
                 return NORMAL_EFFECTIVENESS;
