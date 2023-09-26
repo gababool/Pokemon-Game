@@ -16,7 +16,6 @@ public class ItemBag {
         if (item.getWeight() + getCurrentWeight() > getMaxWeight()) {
             return -1;
         }
-
         int indexToAdd = getItemWeightIndex(item);
         if (indexToAdd >= 0)
             storedItems.add(indexToAdd, item);
@@ -41,9 +40,7 @@ public class ItemBag {
         if (!isIndexOutOfBounds(index)) {
             Item item = storedItems.get(index);
             return item.toString();
-        } return "";
-
-        
+        } return "";  
     }
 
     public Item removeItemAt(int index) {
@@ -52,7 +49,6 @@ public class ItemBag {
             return item;
         }
         return null;
-
     }
 
     public boolean isIndexOutOfBounds(int index) {
@@ -73,7 +69,7 @@ public class ItemBag {
         return MAX_WEIGHT;
     }
 
-    public double getCurrentWeight() { // Variable or loop?
+    public double getCurrentWeight() { // Variable or loop? 
         double currentWeight = 0;
         for (Item i : storedItems) {
             currentWeight += i.getWeight();
@@ -84,5 +80,4 @@ public class ItemBag {
     public int getNumOfItems() {
         return storedItems.size();
     }
-
 }

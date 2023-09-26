@@ -8,6 +8,7 @@ public class Pokemon {
     private final int MAX_HP;
     private final int MAX_EP = 100;
     private final int FAINT_HP = 0;
+    private final int LOWEST_EP = 0;
 
     private String name;
     private int currentHP;
@@ -101,8 +102,8 @@ public class Pokemon {
 
     public void spendEP() {
         int energyCost = skill.getEC();
-        if (energy - energyCost < 0) {
-            energy = 0;
+        if (energy - energyCost < LOWEST_EP) {
+            energy = LOWEST_EP;
         } else {
             energy -= energyCost;
         }

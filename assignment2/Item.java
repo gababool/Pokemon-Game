@@ -11,21 +11,9 @@ public class Item {
         this.weight = weight;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getPowerValue() {
-        return powerValue;
-    }
-
-    public double getWeight() {
-        return weight;
-    }
-
     private double truncateDouble(double value){
         double truncateDouble;
-        truncateDouble = (int)(getWeight() * 1000.0) / 10;
+        truncateDouble = (int)(weight * 1000.0) / 10;
         truncateDouble = truncateDouble / 100;
         return truncateDouble;
     }
@@ -41,5 +29,17 @@ public class Item {
         Item itemToCompare = (Item) obj;
    
         return (itemToCompare.name == name && itemToCompare.powerValue == powerValue && itemToCompare.weight == weight);
+    }
+    
+    public String getName() {
+        return name;
+    }
+
+    public int getPowerValue() {
+        return powerValue;
+    }
+
+    public double getWeight() {
+        return weight;
     }
 }
