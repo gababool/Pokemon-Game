@@ -16,12 +16,12 @@ public class Pokemon {
     private boolean isFainted;
     private Skill skill;
 
-    public Pokemon(String name, int MAX_HP, PokemonType type) {
+    public Pokemon(String name, int MAX_HP, String type) {
         this.name = name;
         this.MAX_HP = MAX_HP;
         this.currentHP = MAX_HP;
         this.energy = MAX_EP;
-        this.type = type;
+        this.type = PokemonType.fromString(type);
         this.skill = null;
         this.knowsSkill = false;
         this.isFainted = false;
@@ -47,7 +47,7 @@ public class Pokemon {
 
         Pokemon otherPokemon = (Pokemon) obj;
         boolean sameName = name == otherPokemon.getName();
-        boolean samePower = type == otherPokemon.getType();
+        boolean samePower = type.toString() == otherPokemon.getType();
         boolean sameSkill = skill == otherPokemon.getSkill();
         boolean sameCurrentHP = currentHP == otherPokemon.getCurrentHP();
         boolean sameMAX_HP = MAX_HP == otherPokemon.getMAX_HP();
@@ -90,7 +90,7 @@ public class Pokemon {
 
     public String receiveDamage(int damage) {
         if (currentHP - damage < FAINT_HP) {
-            currentHP = 0;
+            currentHP = FAINT_HP;
             isFainted = true;
             return name + " has " + currentHP + " HP left. " + name + " faints.";
         } else {
@@ -153,8 +153,8 @@ public class Pokemon {
         this.name = name;
     }
 
-    public PokemonType getType() {
-        return type;
+    public String getType() {
+        return type.toString();
     }
 
     public int getMAX_HP() {
