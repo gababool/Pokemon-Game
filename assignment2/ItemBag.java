@@ -73,7 +73,7 @@ public class ItemBag {
         return MAX_WEIGHT;
     }
 
-    public double getCurrentWeight() {
+    public double getCurrentWeight() { // Variable or loop?
         double currentWeight = 0;
         for (Item i : storedItems) {
             currentWeight += i.getWeight();
