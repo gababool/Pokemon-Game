@@ -7,28 +7,28 @@ public class TypeEffectiveness {
     final static private double NORMAL_EFFECTIVENESS = 1.0;
     
 
-    public static double calculateMultiplier(String attacker, String defender) {
-        switch (attacker) {
+    public static double calculateMultiplier(String attackerType, String defenderType) {
+        switch (attackerType) {
             case "Water":
-                return calculateWaterMultiplier(defender);
+                return calculateWaterMultiplier(defenderType);
             case "Fire":
-                return calculateFireMultiplier(defender);
+                return calculateFireMultiplier(defenderType);
             case "Grass":
-                return calculateGrassMultiplier(defender);
+                return calculateGrassMultiplier(defenderType);
             case "Bug":
-                return calculateBugMultiplier(defender);
+                return calculateBugMultiplier(defenderType);
             case "Electric":
-                return calculateElectricMultiplier(defender);
+                return calculateElectricMultiplier(defenderType);
             case "Dragon":
-                return calculateDragonMultiplier(defender);    
+                return calculateDragonMultiplier(defenderType);    
             case "Ice":
-                return calculateIceMultiplier(defender);
+                return calculateIceMultiplier(defenderType);
         }
         return NORMAL_EFFECTIVENESS;
     }
 
-    private static double calculateFireMultiplier(String defender) {
-        switch (defender) {
+    private static double calculateFireMultiplier(String defenderType) {
+        switch (defenderType) {
             case "Fire":
             case "Water":
             case "Dragon":
@@ -42,8 +42,8 @@ public class TypeEffectiveness {
         }
     }
 
-    private static double calculateGrassMultiplier(String defender){
-            switch (defender){
+    private static double calculateGrassMultiplier(String defenderType){
+            switch (defenderType){
                 case "Fire":
                 case "Grass":
                 case "Dragon":
@@ -56,8 +56,8 @@ public class TypeEffectiveness {
         }
     }
     
-    private static double calculateIceMultiplier(String defender){
-            switch (defender){
+    private static double calculateIceMultiplier(String defenderType){
+            switch (defenderType){
                 case "Fire":
                 case "Ice":
                 case "Water":
@@ -70,8 +70,8 @@ public class TypeEffectiveness {
         }
     }
 
-    private static double calculateWaterMultiplier(String defender){
-            switch (defender){
+    private static double calculateWaterMultiplier(String defenderType){
+            switch (defenderType){
                 case "Grass":
                 case "Dragon":
                 case "Water":
@@ -83,8 +83,8 @@ public class TypeEffectiveness {
         }
     }
 
-    private static double calculateBugMultiplier(String defender){
-        switch (defender){
+    private static double calculateBugMultiplier(String defenderType){
+        switch (defenderType){
             case "Fire":
                 return NOT_VERY_EFFECTIVE;
             case "Grass":
@@ -94,16 +94,16 @@ public class TypeEffectiveness {
         } 
     }
 
-    private static double calculateDragonMultiplier(String defender){
-        switch (defender){
+    private static double calculateDragonMultiplier(String defenderType){
+        switch (defenderType){
             case "Dragon":
                 return SUPER_EFFECTIVE;
             default:
                 return NORMAL_EFFECTIVENESS;
         } 
     }
-    private static double calculateElectricMultiplier(String defender){
-        switch (defender){
+    private static double calculateElectricMultiplier(String defenderType){
+        switch (defenderType){
             case "Grass":
             case "Electric":
             case "Dragon":
@@ -118,9 +118,9 @@ public class TypeEffectiveness {
 public static String generateEffectivenessMsg(double multiplier) {
     String effectiveness = "";
     if (multiplier == NOT_VERY_EFFECTIVE) {
-        effectiveness = " It is not very effective...";
+        effectiveness += " It is not very effective...";
     } else if (multiplier == SUPER_EFFECTIVE) {
-        effectiveness = " It is super effective!";
+        effectiveness += " It is super effective!";
     }
     return effectiveness;
 

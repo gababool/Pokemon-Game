@@ -42,11 +42,11 @@ public class Skill {
 
     public String useSkill(Pokemon attacker, Pokemon defender){
         double multiplier = TypeEffectiveness.calculateMultiplier(attacker.getType(), defender.getType());
-        double damage = AP * multiplier;
-        String attackMsg = defender.receiveDamage((int)damage);
-        String effectivenessMsg = TypeEffectiveness.generateEffectivenessMsg(multiplier);
-        String finalMsg = String.format("%s uses %s on %s.%s%n%s", attacker.getName(), skillName, defender.getName(), effectivenessMsg, attackMsg);
-        return finalMsg;
+        String damageReceivedString = defender.receiveDamage((int)(AP * multiplier));
+        String effectivenessString = TypeEffectiveness.generateEffectivenessMsg(multiplier);
+        
+        return String.format("%s uses %s on %s.%s%n%s", 
+        attacker.getName(), skillName, defender.getName(), effectivenessString, damageReceivedString);
     }
 
     public String getName(){

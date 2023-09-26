@@ -91,8 +91,8 @@ public class Pokemon {
         return attackMsg;
     }
 
-    public String receiveDamage(int damage) {
-        if (currentHP - damage < FAINT_HP) {
+    public String receiveDamage(double damage) {
+        if (currentHP - damage <= FAINT_HP) {
             currentHP = FAINT_HP;
             isFainted = true;
             return name + " has " + currentHP + " HP left. " + name + " faints.";

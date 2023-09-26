@@ -26,8 +26,8 @@ public enum PokemonType {
                 return type;
             }  
         } 
-        throw new IllegalArgumentException("No PokemonType with name " + typeName + " found");
-        // Alternatively you could return null instead, but we are unsure wheter that breaks the rules from
-        // the instructions since that would mean that a Pokemon could be created without a type.
+        return null;
+        // Ideally you would want to throw an exception here if the Pokémon type doesn't exist, but we 
+        // chose to return null for this assignment since we assume arguments are valid.
     }
 }
