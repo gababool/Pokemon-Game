@@ -38,32 +38,32 @@ public class ItemBag {
     }
 
     public String peekItemAt(int index) {
-        if (index < 0) {
-            return "";
-        } else if (index > storedItems.size() - 1) {
-            return "";
-        }
-        Item item = storedItems.get(index);
-        return item.toString();
+        if (!isIndexOutOfBounds(index)) {
+            Item item = storedItems.get(index);
+            return item.toString();
+        } return "";
+
+        
     }
 
     public Item removeItemAt(int index) {
-        if (index < 0) {
-            return null;
-        } else if (index > storedItems.size() - 1) {
-            return null;
+        if (!isIndexOutOfBounds(index)) {
+            Item item = storedItems.remove(index);
+            return item;
         }
-        Item item = storedItems.remove(index);
-        return item;
+        return null;
+
     }
 
-    //public void isIndexOutOfBounds
-    //if (index < 0) {
-    //        return true;
-    //    } else if (index > storedItems.size() - 1) {
-    //        return true;
-    //    } else return false
-    //
+    public boolean isIndexOutOfBounds(int index) {
+        if (index < 0) {
+            return true;
+        } else if (index > storedItems.size() - 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public Item popItem() {
         return removeItemAt(0);
