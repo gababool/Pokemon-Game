@@ -8,3 +8,5 @@ UseSkill ?
 Maybe: Enums?
 
 Throw exception in PokemonType!?
+
+Change equals method in Item?
