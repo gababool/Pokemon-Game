@@ -1,5 +1,10 @@
-Check getCurrentWeight, is it unnecessary iteration to go through the entire loop when asking for the current weight of the bag?
+Check getCurrentWeight, is it unnecessary iteration to go through the entire loop when asking 
+for the current weight of the bag?
 
 Check useSkill and attack, can we simplify the methods? Make them more cohesive?
 
+UseSkill ?
+
 Maybe: Enums?
+
+Throw exception in PokemonType!?

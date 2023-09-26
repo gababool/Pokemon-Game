@@ -9,6 +9,8 @@ public class Pokemon {
     private final int MAX_EP = 100;
     private final int FAINT_HP = 0;
     private final int LOWEST_EP = 0;
+    private final int RESTORED_EP = 25;
+    private final int REST_HP = 20;
 
     private String name;
     private int currentHP;
@@ -75,16 +77,16 @@ public class Pokemon {
     public String attack(Pokemon defender) {
         String attackMsg = "";
         if (skill == null) {
-            attackMsg = "Attack failed." + name + " does not know a skill.";
+            attackMsg += "Attack failed." + name + " does not know a skill.";
         } else if (skill.getEC() > energy) {
-            attackMsg = "Attack failed. " + name + " lacks energy: " + energy + "/" + skill.getEC();
+            attackMsg += "Attack failed. " + name + " lacks energy: " + energy + "/" + skill.getEC();
         } else if (isFainted) {
-            attackMsg = "Attack failed. " + name + " fainted.";
+            attackMsg += "Attack failed. " + name + " fainted.";
         } else if (defender.isFainted()) {
-            attackMsg = "Attack failed. " + defender.getName() + " fainted.";
+            attackMsg += "Attack failed. " + defender.getName() + " fainted.";
         } else {
             spendEP();
-            attackMsg = skill.useSkill(this, defender); 
+            attackMsg += skill.useSkill(this, defender); 
         }
         return attackMsg;
     }
@@ -110,20 +112,18 @@ public class Pokemon {
     }
 
     public void recoverEnergy() {
-        int restoredEP = 25;
-        if ((energy + restoredEP) > MAX_EP) {
+        if ((energy + RESTORED_EP) > MAX_EP) {
             energy = MAX_EP;
         } else {
-            energy += restoredEP;
+            energy += RESTORED_EP;
         }
     }
 
     public void rest() {
-        int restoredHP = 20;
         if (isFainted) {
             return;
         }
-        heal(restoredHP);
+        heal(REST_HP);
     }
 
     public String useItem(Item item) {
