@@ -2,49 +2,49 @@ package assignment2;
 
 public class TypeEffectiveness {
 
-    public static double calculateMultiplier(String attacker, String defender) {
+    public static double calculateMultiplier(PokemonType attacker, PokemonType defender) {
         double multiplier = 1.0;
 
         switch (attacker) {
-            case "Fire":
+            case FIRE:
                 switch (defender) {
-                    case "Fire":
+                    case FIRE:
                         multiplier = 0.5;
                         break;
-                    case "Grass":
+                    case GRASS:
                         multiplier = 2.0;
                         break;
-                    case "Water":
+                    case WATER:
                         multiplier = 0.5;
                         break;
                     default:
                         break;
                 }
                 break;
-            case "Water":
+            case WATER:
                 switch (defender) {
-                    case "Fire":
+                    case FIRE:
                         multiplier = 2.0;
                         break;
-                    case "Grass":
+                    case GRASS:
                         multiplier = 0.5;
                         break;
-                    case "Water":
+                    case WATER:
                         multiplier = 0.5;
                         break;
                     default:
                         break;
                 }
                 break;
-            case "Grass":
+            case GRASS:
                 switch (defender) {
-                    case "Fire":
+                    case FIRE:
                         multiplier = 0.5;
                         break;
-                    case "Grass":
+                    case GRASS:
                         multiplier = 0.5;
                         break;
-                    case "Water":
+                    case WATER:
                         multiplier = 2.0;
                         break;
                     default:
@@ -52,7 +52,7 @@ public class TypeEffectiveness {
 
                 }
                 break;
-            case "Normal":
+            case NORMAL:
                 break;
 
         }

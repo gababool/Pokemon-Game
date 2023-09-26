@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Pokemon {
 
-    private final String type;
+    private final PokemonType type;
     private final int MAX_HP;
     private final int MAX_EP = 100;
     private final int FAINT_HP = 0;
@@ -16,7 +16,7 @@ public class Pokemon {
     private boolean isFainted;
     private Skill skill;
 
-    public Pokemon(String name, int MAX_HP, String type) {
+    public Pokemon(String name, int MAX_HP, PokemonType type) {
         this.name = name;
         this.MAX_HP = MAX_HP;
         this.currentHP = MAX_HP;
@@ -153,7 +153,7 @@ public class Pokemon {
         this.name = name;
     }
 
-    public String getType() {
+    public PokemonType getType() {
         return type;
     }
 

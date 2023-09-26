@@ -6,9 +6,15 @@ public enum PokemonType {
     GRASS("Grass"),
     NORMAL("Normal");
 
-    String type;
+    private final String type;
 
     private PokemonType(String type) {
         this.type = type;
     }
+
+    public String getType() {
+        return type;
+    }
+
+    
 }
