@@ -59,7 +59,6 @@ public class Pokemon {
         return (sameName && samePower && sameSkill && sameCurrentHP && sameMAX_HP && sameEnergy);
     }
 
-
     public void learnSkill(String skillName, int skillAP, int skillEC) {
         this.skill = new Skill(skillName, skillAP, skillEC);
         this.knowsSkill = true;
@@ -71,30 +70,41 @@ public class Pokemon {
     }
 
     public String attack(Pokemon defender) {
-        String attackMsg = "";
+        String attackResult = "";
         if (skill == null) {
-            attackMsg += "Attack failed." + name + " does not know a skill.";
+            attackResult += "Attack failed." + name + " does not know a skill.";
+
         } else if (skill.getEC() > energy) {
-            attackMsg += "Attack failed. " + name + " lacks energy: " + energy + "/" + skill.getEC();
+            attackResult += "Attack failed. " + name + " lacks energy: " + energy + "/" + skill.getEC();
+
         } else if (isFainted) {
-            attackMsg += "Attack failed. " + name + " fainted.";
+            attackResult += "Attack failed. " + name + " fainted.";
+
         } else if (defender.isFainted()) {
-            attackMsg += "Attack failed. " + defender.getName() + " fainted.";
+            attackResult += "Attack failed. " + defender.getName() + " fainted.";
+
         } else {
             spendEP();
-            attackMsg += skill.useSkill(this, defender); 
+
+            double multiplier = TypeEffectiveness.calculateMultiplier(type, defender.getPokemonType());
+            double damage = (skill.getAP() * multiplier);
+            String skillMsg = skill.useSkill(this, defender);
+            String effectivenessMsg = TypeEffectiveness.generateEffectivenessMsg(multiplier);
+            String damageMsg = defender.receiveDamage((int) damage);
+            
+            attackResult += skillMsg + effectivenessMsg + damageMsg;
         }
-        return attackMsg;
+        return attackResult;
     }
 
-    public String receiveDamage(double damage) {
+    private String receiveDamage(double damage) {
         if (currentHP - damage <= FAINT_HP) {
             currentHP = FAINT_HP;
             isFainted = true;
-            return name + " has " + currentHP + " HP left. " + name + " faints.";
+            return String.format("%n%s has %d HP left. %s faints.", name, currentHP, name);
         } else {
             currentHP -= damage;
-            return name + " has " + currentHP + " HP left.";
+            return String.format("%n%s has %d HP left.", name, currentHP);
         }
     }
 
