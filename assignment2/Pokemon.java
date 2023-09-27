@@ -1,7 +1,5 @@
 package assignment2;
 
-import java.util.Objects;
-
 public class Pokemon {
 
     private final PokemonType type;
@@ -35,11 +33,12 @@ public class Pokemon {
         if (skill == null) {
             return String.format("%s (%s)", name, type);
         } else {
-            return String.format("%s (%s). Knows %s - AP: %d EC: %d", name, type, skill.getName(), skill.getAP(),
-                    skill.getEC());
+            return String.format("%s (%s). Knows %s - AP: %d EC: %d", 
+            name, type, skill.getName(), skill.getAP(),skill.getEC());
         }
     }
 
+    @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
@@ -47,7 +46,6 @@ public class Pokemon {
         if (obj == null || this.getClass() != obj.getClass()) {
             return false;
         }
-
         Pokemon otherPokemon = (Pokemon) obj;
         boolean sameName = name == otherPokemon.getName();
         boolean samePower = getPokemonType() == otherPokemon.getPokemonType();
@@ -108,7 +106,7 @@ public class Pokemon {
         }
     }
 
-    public void spendEP() {
+    private void spendEP() {
         int energyCost = skill.getEC();
         if (energy - energyCost < LOWEST_EP) {
             energy = LOWEST_EP;
@@ -143,7 +141,7 @@ public class Pokemon {
         return String.format("%s used %s. It healed %d HP.", pokemonName, itemName, healedHp);
     }
 
-    public int heal(int hp) {
+    private int heal(int hp) {
         int newHp = this.currentHP + hp;
         if (newHp > this.MAX_HP) {
             int healed = this.MAX_HP - this.currentHP;

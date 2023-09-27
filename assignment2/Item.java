@@ -31,12 +31,11 @@ public class Item {
         if (obj == null || this.getClass() != obj.getClass()) {
             return false;
         }
-
         Item itemToCompare = (Item)obj;
         boolean sameName = name == itemToCompare.getName();
         boolean samePower = powerValue == itemToCompare.getPowerValue();
         boolean sameWeight = weight == itemToCompare.getWeight();
-   
+        
         return (sameName && samePower && sameWeight);
     }
     

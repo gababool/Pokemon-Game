@@ -17,6 +17,7 @@ public class Skill {
         return String.format("%s - AP: %s EC: %s%n", skillName, AP, EC);   
     }
 
+    @Override
     public boolean equals(Object obj){
         if(this == obj){
             return true;
