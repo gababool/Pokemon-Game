@@ -50,7 +50,7 @@ public class Pokemon {
 
         Pokemon otherPokemon = (Pokemon) obj;
         boolean sameName = name == otherPokemon.getName();
-        boolean samePower = type.toString() == otherPokemon.getType();
+        boolean samePower = getPokemonType() == otherPokemon.getPokemonType();
         boolean sameSkill = skill == otherPokemon.getSkill();
         boolean sameCurrentHP = currentHP == otherPokemon.getCurrentHP();
         boolean sameMAX_HP = MAX_HP == otherPokemon.getMAX_HP();
@@ -156,6 +156,10 @@ public class Pokemon {
 
     public String getType() {
         return type.toString();
+    }
+
+    public PokemonType getPokemonType() {
+        return type;
     }
 
     public int getMAX_HP() {

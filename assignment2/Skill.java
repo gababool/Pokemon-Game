@@ -41,7 +41,7 @@ public class Skill {
     }
 
     public String useSkill(Pokemon attacker, Pokemon defender){
-        double multiplier = TypeEffectiveness.calculateMultiplier(attacker.getType(), defender.getType());
+        double multiplier = TypeEffectiveness.calculateMultiplier(attacker.getPokemonType(), defender.getPokemonType());
         String damageReceivedString = defender.receiveDamage((int)(AP * multiplier));
         String effectivenessString = TypeEffectiveness.generateEffectivenessMsg(multiplier);
         
