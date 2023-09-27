@@ -1,0 +1,22 @@
+
+
+Task 8 - Change Request: New Pokemon Types.
+
+The request to add new types required a few changes in our code, mainly in the PokemonType enum and in
+the TypeEffectiveness class. Firstly we had to add the new types to PokemonType so that we are able to
+create Pokémon of those types, and also so that we can calculate their effectiveness based on what type
+they are and what type they are attacking. This part was the easiest, since we simply just had to add
+the names of the new types to the enum values we already had.
+
+The next change was made to our switch case in calculateMultiplier() inside the TypeEffectiveness class, 
+where we had to make new switch cases for the different types and return different multipliers for the new types. 
+While doing this we realised that a massive, nested switch statement was not really that readable or modular,
+so we changed our design into a smaller switch statement where we called separate methods for calculations for 
+each type which we created. For example, switch (attackerType) -> case FIRE -> calculateFireMultiplier().
+Before that we had one switch for the attacker and a nested switch for the defender.
+This made the code much easier to understand, and if we were to add new types, we can just create a new method 
+to call on the switch statement, without performing surgery on a massive one.
+
+We also realised that returning the actual multiplier for every case, i.e 0.5 or 2.0, was as readable
+as just assigning those to final variables, since they will not ever change. These variables we named
+after the effectivenes, for example private final SUPER_EFFECTIVE. 
