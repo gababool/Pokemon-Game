@@ -2,7 +2,7 @@ package assignment2;
 
 public class Pokemon {
 
-    private final PokemonType type;
+    private final PokemonType TYPE;
     private final int MAX_HP;
     private final int MAX_EP = 100;
     private final int FAINT_HP = 0;
@@ -22,7 +22,7 @@ public class Pokemon {
         this.MAX_HP = MAX_HP;
         this.currentHP = MAX_HP;
         this.energy = MAX_EP;
-        this.type = PokemonType.fromString(type);
+        this.TYPE = PokemonType.fromString(type);
         this.skill = null;
         this.knowsSkill = false;
         this.isFainted = false;
@@ -31,10 +31,10 @@ public class Pokemon {
     @Override
     public String toString() {
         if (skill == null) {
-            return String.format("%s (%s)", name, type);
+            return String.format("%s (%s)", name, TYPE);
         } else {
             return String.format("%s (%s). Knows %s - AP: %d EC: %d", 
-            name, type, skill.getName(), skill.getAP(),skill.getEC());
+            name, TYPE, skill.getName(), skill.getAP(),skill.getEC());
         }
     }
 
@@ -84,7 +84,7 @@ public class Pokemon {
         } else {
             spendEP();
 
-            double multiplier = TypeEffectiveness.calculateMultiplier(type, defender.getPokemonType());
+            double multiplier = TypeEffectiveness.calculateMultiplier(TYPE, defender.getPokemonType());
             double damage = (skill.getAP() * multiplier);
             String skillMsg = skill.useSkill(this, defender);
             String effectivenessMsg = TypeEffectiveness.generateEffectivenessMsg(multiplier);
@@ -159,11 +159,11 @@ public class Pokemon {
     }
 
     public String getType() {
-        return type.toString();
+        return TYPE.toString();
     }
 
     public PokemonType getPokemonType() {
-        return type;
+        return TYPE;
     }
 
     public int getMAX_HP() {
