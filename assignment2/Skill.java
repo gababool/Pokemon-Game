@@ -1,7 +1,5 @@
 package assignment2;
 
-import java.util.Objects;
-
 public class Skill {
 
     final private String skillName;
@@ -33,11 +31,6 @@ public class Skill {
         boolean sameEC = this.EC == otherSkill.getEC();
 
         return (sameName && sameAP && sameEC);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(skillName, AP, EC);
     }
 
     public String useSkill(Pokemon attacker, Pokemon defender){

@@ -23,6 +23,7 @@ public class Item {
         return String.format("%s heals %d HP. (%.2f)", name, powerValue, truncateDouble(weight));
     }
     
+    @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
@@ -31,9 +32,12 @@ public class Item {
             return false;
         }
 
-        Item itemToCompare = (Item) obj;
+        Item itemToCompare = (Item)obj;
+        boolean sameName = name == itemToCompare.getName();
+        boolean samePower = powerValue == itemToCompare.getPowerValue();
+        boolean sameWeight = weight == itemToCompare.getWeight();
    
-        return (itemToCompare.name == name && itemToCompare.powerValue == powerValue && itemToCompare.weight == weight);
+        return (sameName && samePower && sameWeight);
     }
     
     public String getName() {

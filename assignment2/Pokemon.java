@@ -59,10 +59,6 @@ public class Pokemon {
         return (sameName && samePower && sameSkill && sameCurrentHP && sameMAX_HP && sameEnergy);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, type, skill, currentHP, MAX_HP, energy);
-    }
 
     public void learnSkill(String skillName, int skillAP, int skillEC) {
         this.skill = new Skill(skillName, skillAP, skillEC);
