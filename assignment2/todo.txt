@@ -2,4 +2,5 @@
 Check useSkill and attack, can we simplify the methods? Make them more cohesive?
 
 Should receive damage be private? Requires changes to useSkill and attack methods.
+- We could put the receiveDamage message in the attack method?
 
