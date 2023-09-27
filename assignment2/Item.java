@@ -22,10 +22,15 @@ public class Item {
     public String toString(){
         return String.format("%s heals %d HP. (%.2f)", name, powerValue, truncateDouble(weight));
     }
-
-    // What happens with assertEquals test when we compare strings? Why is it still working?
-    @Override 
+    
     public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || this.getClass() != obj.getClass()) {
+            return false;
+        }
+
         Item itemToCompare = (Item) obj;
    
         return (itemToCompare.name == name && itemToCompare.powerValue == powerValue && itemToCompare.weight == weight);

@@ -5,8 +5,6 @@ Check useSkill and attack, can we simplify the methods? Make them more cohesive?
 
 UseSkill ?
 
-Maybe: Enums?
+Enums: in new branch
 
 Throw exception in PokemonType!?
-
-Change equals method in Item?
