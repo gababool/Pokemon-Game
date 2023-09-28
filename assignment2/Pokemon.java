@@ -14,7 +14,6 @@ public class Pokemon {
     private int currentHP;
     private int energy;
     private boolean knowsSkill;
-    private boolean isFainted;
     private Skill skill;
 
     public Pokemon(String name, int MAX_HP, String type) {
@@ -25,7 +24,6 @@ public class Pokemon {
         this.TYPE = PokemonType.fromString(type);
         this.skill = null;
         this.knowsSkill = false;
-        this.isFainted = false;
     }
 
     @Override
@@ -75,10 +73,10 @@ public class Pokemon {
         } else if (skill.getEC() > energy) {
             attackResult += "Attack failed. " + name + " lacks energy: " + energy + "/" + skill.getEC();
 
-        } else if (isFainted) {
+        } else if (currentHP == FAINT_HP) {
             attackResult += "Attack failed. " + name + " fainted.";
 
-        } else if (defender.isFainted()) {
+        } else if (defender.getCurrentHP() == FAINT_HP) {
             attackResult += "Attack failed. " + defender.getName() + " fainted.";
 
         } else {
@@ -98,7 +96,6 @@ public class Pokemon {
     private String receiveDamage(double damage) {
         if (currentHP - damage <= FAINT_HP) {
             currentHP = FAINT_HP;
-            isFainted = true;
             return String.format("%n%s has %d HP left. %s faints.", name, currentHP, name);
         } else {
             currentHP -= damage;
@@ -124,7 +121,7 @@ public class Pokemon {
     }
 
     public void rest() {
-        if (isFainted) {
+        if (currentHP == FAINT_HP) {
             return;
         }
         heal(REST_HP);
@@ -189,9 +186,4 @@ public class Pokemon {
     public boolean knowsSkill() {
         return knowsSkill;
     }
-
-    public boolean isFainted() {
-        return isFainted;
-    }
-
 }
