@@ -5,7 +5,7 @@ Before we received task 8, our type calculation (this being, the class and metho
 This meant that we had a switch case for the attacker, with the cases FIRE, WATER, GRASS. Then, inside of each case of the attackers type, we had a switch case for the defender type. 
 It looked like this; 
 
-switch (attackerType)
+switch (attackerType) 
 	case: “Fire”
 		switch (defenderType) {
 			case: “Fire”
