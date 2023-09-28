@@ -1,22 +1,19 @@
 Task 8 Change Request.
 
-Before the change request our code had the same structure as far as in which class we defined and used
-the different variables and methods. Altough we did have to consider if we could refactor some
-parts of code due to readability when we realised that even more Pokemon types should be able to be added.
+After the change request our code has the same structure as far as in which class we define and use
+the different variables and methods. Although, we realised that our code didn't scale well and that the 
+possibility of adding even more Pokemon types wasn't sustainable due to the construction of our code.
 
 So, since the change request required 4 new types of Pokemons, the first thing we did was to
 add these to the enums in PokemonType. We did this to be able to create new Pokemons of any of
 these, now 8, different types. Next step was to add them in the TypeEffectiveness switch case, 
 which handles the effectiveness of different Pokemon types attacks against eachother in battle.
-And here we came to the conclusion that our switch case was far too long for it to be readable
-or sustainable.
+The construction of the code in our switch case was very repetitive and we decided to make a few
+changes here. Since we used the calculateMultiplier where every pokemon type requires it's own
+calculateMultiplier (e.g. calculateWaterMultiplier) inside the switch, we decided to move these
+and declare them outside of the switch instead. This made us save a lot of space and also made it more readable.
 
-Since we use the calculateMultiplier in our switch case, where every pokemon type requires it's own
-calculateMultiplier (e.g. calculateWaterMultiplier) we realised we could move these out of the switch case
-and declare them outside of the case. This made us save a lot of space and also made it more readable. We
-then refactored the switch case by moving all the damage values (0.5, 1.0, 2.0) and making them into constants 
-outside of the case. This to make the code more robust, making potential changes easier since it only requires changes
-in one place and ofcourse for readability. When doing this we also came to the conclusion that it is
-possible to let all the types who has the same effectiveness, in that specific switch case, to all return the
-same damage value, once. So instead of every pokemon type returning 0.5, all the types who will return 0.5 are
-bundled together.
+We then refactored the switch case by moving all the damage values (0.5, 1.0, 2.0) and making them into constants 
+outside of the case. This to make the code more robust and making potential changes easier since it only requires change
+in one place. When doing this we also realised we could bundle the cases who had the same outcome. So instead of
+repeating the same return statement, we now only have one return for each damagevalue.
