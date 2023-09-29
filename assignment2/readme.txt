@@ -17,5 +17,5 @@ Emma:
 - Made the toString() methods work in the classes that needed them. (Task 1+2+6)
 
 Martin:
-- Mainly responsible for the Pokemon methods, including attack(), receiveDamage(), spendEP(), etc. (Task 1+3+5)
+- Mainly responsible for many of the Pokemon methods, including attack(), receiveDamage(), spendEP(). (Task 1+3+5)
 - Responsible for the Skill class and how useSkill() it integrates with Pokemon's attack(). (Task 2)
