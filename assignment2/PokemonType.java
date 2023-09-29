@@ -27,7 +27,7 @@ public enum PokemonType {
             }  
         } 
         return null;
-        // Ideally you would want to throw an exception here if the Pokémon type doesn't exist, but we 
+        // Ideally you would want to throw an exception here if the Pokemon type does not exist, but we 
         // chose to return null for this assignment since we assume arguments are valid.
     }
 }
